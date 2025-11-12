@@ -1,13 +1,23 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hola', function(Request $request){
-    $nombre = $request->query('nombre');
+Route::get('/hola', function(){
+    $nombre = request()->query('nombre');
+    $nombre = request('nombre');
     return "Hola, $nombre";
+});
+
+Route::get('/clientes', function () {
+    return  view('clientes.index', [
+        'nombre' => 'pepito',
+    ]);
+});
+
+Route::get('/clientes/create', function() {
+    return view('clientes.create');
 });
