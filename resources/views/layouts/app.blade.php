@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="bg-gray-200">
 
 <head>
     <meta charset="utf-8">
@@ -15,9 +15,35 @@
     @endif
 </head>
 
-<body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
-        <main>
+<body>
+    <div class="min-h-screen bg-gray-200">
+        <!-- Barra superior -->
+        <div class="navbar bg-base-100 shadow-sm">
+            <div class="flex-1">
+                <a href="/" class="btn btn-ghost text-xl">Steam</a>
+            </div>
+            <div class="flex-none">
+                <ul class="menu menu-horizontal px-1">
+                    <li><a href="{{ route('clientes.index')}}">Clientes</a></li>
+                    <li><a href="{{ route('videojuegos.index')}}">Videojuegos</a></li>
+                    <li><a href="{{ route('generos.index')}}">Generos</a></li>
+
+                    <li>
+                        <details>
+                            <summary>Menú</summary>
+                            <ul class="bg-base-100 rounded-t-none p-2">
+                                <li><a href="">Opciones</a></li>
+                                <li><a href="">Salir</a></li>
+                            </ul>
+                        </details>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Principal -->
+        <main class="m-6">
+            <x-alert-exito/>
+            <x-alert-fallo/>
             {{ $slot }}
         </main>
     </div>

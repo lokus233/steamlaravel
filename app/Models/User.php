@@ -4,6 +4,10 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -44,5 +48,20 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    public function cliente(): HasOne{
+        return $this->hasOne(Cliente::class);
+    }
+
+    public function videojuegos(): MorphToMany {
+        return $this->morphedByMany(Videojuego::class, 'adquirible');
+    }
+
+    public function hardware(): MorphToMany {
+        return $this->morphedByMany(Hardware::class, 'adquirible');
+    }
+
+    public function logros() : BelongsToMany {
+        return $this->belongsToMany(Logro::class)->withTimestamps();
     }
 }
