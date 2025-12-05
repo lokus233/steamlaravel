@@ -9,8 +9,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('videojuegos.index');
 });
+
 
 Route::get('/hola', function () {
     $nombre = request()->query('nombre');
@@ -93,3 +94,5 @@ Route::post('/videojuegos/{videojuego}/agregar_genero',
     'videojuegos/{videojuego}/quitar_genero/{genero}',
     [VideojuegoController::class, 'quitar_genero']
  )->name('videojuegos.quitar_genero');
+
+Route::redirect('/', route('videojuegos.index'));

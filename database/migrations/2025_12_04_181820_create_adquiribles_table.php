@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('adquiribles', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained();
             $table->morphs('adquirible');
-            $table->primary(['user_id', 'adquirible_id', 'adquirible_type']);
+            $table->primary(['user_id', 'adquirible_id', 'adquirible_type']); //tabla pivotes
         });
     }
 

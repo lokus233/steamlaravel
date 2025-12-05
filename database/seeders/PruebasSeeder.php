@@ -46,6 +46,11 @@ class PruebasSeeder extends Seeder
                 ['genero' => 'Simulador'],
             ]);
 
+            DB::table('hardware')->insert([
+                ['nombre' => 'Steam Controller', 'descripcion' => '...', 'precio' => 80.00],
+                ['nombre' => 'Steam Machine', 'descripcion' => '...', 'precio' => 70.00],
+            ]);
+
             Db::table('genero_videojuego')->insert([]);
     }
     }
