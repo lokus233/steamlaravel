@@ -51,9 +51,11 @@ class VideojuegoController extends Controller
         $otros_generos = Genero::whereDoesntHave('videojuegos', function(Builder $q)use($videojuego){
             $q->where('videojuegos.id', $videojuego->id);
         })->orderBy('genero')->get();
+        $usuarios = $videojuego->users;
 
         return view('videojuegos.show', ['videojuego'=>$videojuego,
-                                         'otros_generos'=>$otros_generos,]);
+                                         'otros_generos'=>$otros_generos,
+                                         'usuarios' => $usuarios]);
      }
 
     /**

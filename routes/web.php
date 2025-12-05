@@ -4,6 +4,7 @@ use App\Http\Controllers\GeneroController;
 use App\Http\Controllers\VideojuegoController;
 use App\Models\Cliente;
 use App\Models\Genero;
+use App\Models\User;
 use App\Models\Videojuego;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -96,3 +97,9 @@ Route::post('/videojuegos/{videojuego}/agregar_genero',
  )->name('videojuegos.quitar_genero');
 
 Route::redirect('/', route('videojuegos.index'));
+
+Route::get('/profile', function(){
+    return view('users.profile',[
+        'usuario'=> User::find(1)
+    ]);
+});
